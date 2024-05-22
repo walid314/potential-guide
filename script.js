@@ -1,10 +1,12 @@
 const btn = document.querySelector("img");
-const audio = document.querySelector("audio");
 
 const handleStartEvent = (event) => {
   event.preventDefault();  // Prevent default touch behavior
   btn.setAttribute("src", "clicked.jpg");
-  audio.play();
+
+  // Create a new audio element for overlapping sound
+  const newAudio = new Audio("path/to/your/sound/file.mp3");
+  newAudio.play();
 };
 
 const handleEndEvent = (event) => {
@@ -13,11 +15,7 @@ const handleEndEvent = (event) => {
 };
 
 // Add event listeners for both touch and mouse events
-btn.addEventListener("touchstart", handleStartEvent);
-btn.addEventListener("mousedown", handleStartEvent);
-btn.addEventListener("touchend", handleEndEvent);
-btn.addEventListener("mouseup", handleEndEvent);
-
-// Ensure passive event listeners do not prevent default behavior
 btn.addEventListener("touchstart", handleStartEvent, { passive: false });
+btn.addEventListener("mousedown", handleStartEvent);
 btn.addEventListener("touchend", handleEndEvent, { passive: false });
+btn.addEventListener("mouseup", handleEndEvent);
