@@ -1,14 +1,14 @@
 const btn = document.querySelector("img");
 const audio = document.querySelector("audio");
 
-// Function to handle start events (mousedown or touchstart)
-const handleStartEvent = () => {
+const handleStartEvent = (event) => {
+  event.preventDefault();  // Prevent default touch behavior
   btn.setAttribute("src", "clicked.jpg");
   audio.play();
 };
 
-// Function to handle end events (mouseup or touchend)
-const handleEndEvent = () => {
+const handleEndEvent = (event) => {
+  event.preventDefault();  // Prevent default touch behavior
   btn.setAttribute("src", "notClicked.jpg");
 };
 
@@ -17,3 +17,7 @@ btn.addEventListener("touchstart", handleStartEvent);
 btn.addEventListener("mousedown", handleStartEvent);
 btn.addEventListener("touchend", handleEndEvent);
 btn.addEventListener("mouseup", handleEndEvent);
+
+// Ensure passive event listeners do not prevent default behavior
+btn.addEventListener("touchstart", handleStartEvent, { passive: false });
+btn.addEventListener("touchend", handleEndEvent, { passive: false });
