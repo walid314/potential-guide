@@ -11,7 +11,7 @@ btn.addEventListener("mousedown", () => {
   audio.play();
 });
 btn.addEventListener("touchend", () => {
-  btn.setAttribute("src", "clicked.jpg");
+  btn.setAttribute("src", "notClicked.jpg");
   audio.play();
 });
 
