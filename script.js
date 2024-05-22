@@ -5,7 +5,7 @@ const handleStartEvent = (event) => {
   btn.setAttribute("src", "clicked.jpg");
 
   // Create a new audio element for overlapping sound
-  const newAudio = new Audio("path/to/your/sound/file.mp3");
+  const newAudio = new Audio("audio.wav");
   newAudio.play();
 };
 
